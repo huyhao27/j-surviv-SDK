@@ -14,4 +14,5 @@ public enum ElementType {
     BULLET,
     SPECIAL,
     HELMET,
+    BUILDING
 }

@@ -1,15 +1,64 @@
 package jsclub.codefest2024.sdk.algorithm;
 
 import jsclub.codefest2024.sdk.base.Node;
+import jsclub.codefest2024.sdk.buildings.Building;
 import jsclub.codefest2024.sdk.model.GameMap;
 import jsclub.codefest2024.sdk.model.obstacles.Obstacle;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class PathUtils {
+    /**
+     * Calculates the center of a structure/building
+     *
+     * @param building to calculate center between 2 nodes.
+     * @return the center of building (a Node)
+     */
+    public static Node getCenterOfStructure (Building building) {
+        int centerX = (building.getLandmarkPos().x + building.getLimitPos().x)/2;
+        int centerY = (building.getLandmarkPos().y + building.getLimitPos().y)/2;
+        return new Node(centerX,centerY);
+    }
+    /**
+     * Find the closest building with the current node using distance method
+     *
+     * @param gameMap which contains all things on the gameMap
+     * @return the closest Building
+     */
+    private static Building getClosestStructure (GameMap gameMap, Node current) {
+        if (gameMap.getListBuildings() == null || gameMap.getListBuildings().size() <= 0) {
+            return null;
+        }
+
+        List<Building> buildings = gameMap.getListBuildings();
+
+        int shortestPath = Integer.MAX_VALUE;
+        Building closestStructure = null;
+
+        for (Building building:buildings){
+            int pathLength = distance(current, getCenterOfStructure(building));
+            if (pathLength < shortestPath) {
+                shortestPath = pathLength;
+                closestStructure = building;
+            }
+        }
+        return closestStructure;
+    }
+    /**
+     * the method to find the shortest path to the closest structure/building from current node
+     *
+     * @param gameMap GameMap, restrictedNodes List<Node> , current Node , target Node , skipDarkArea boolean to calculate moves.
+     * @return the shortest path to the closest structure if the path exists
+     */
+    public static String getPathToClosestStructure(GameMap gameMap, List<Node> restrictedNodes, Node current, Node target, boolean skipDarkArea) {
+        Building closestBuilding = getClosestStructure(gameMap, current);
+        String shortestPath = getShortestPath(gameMap, restrictedNodes, current, closestBuilding, false);
+        if (shortestPath != null && !shortestPath.isEmpty()) {
+            return shortestPath;
+        } else {
+            return null;
+        }
+    }
     /**
      * Calculates the Manhattan distance between Node x and Node y
      *

@@ -12,10 +12,12 @@ public class Building extends Element {
     public Building(String id, ShapeType shapeType) {
         super(id);
         this.shapeType = shapeType;
+        this.setType(ElementType.BUILDING);
     }
 
     public Building(String id, ShapeType shapeType, Node limitPos, Node landmarkPos) {
         super(id);
+        this.setType(ElementType.BUILDING);
         this.shapeType = shapeType;
         this.limitPos = limitPos;
         this.landmarkPos = landmarkPos;
