@@ -1,24 +1,16 @@
 package jsclub.codefest2024.sdk.socket;
 
 public class EventName {
-    //Listening Event (Server -> SDK)
-    public static final String ON_MAP_INIT = "player:game:state:init";
-    public static final String ON_START_GAME = "player:game:status:start";
-    public static final String ON_MAP_UPDATE = "player:game:state:update";
-    public static final String ON_INVENTORY_UPDATE = "player:inventory:set";
-    public static final String ON_INVENTORY_CLEAR = "player:inventory:clear";
-    public static final String ON_EFFECT_APPLY = "player:effects:apply";
-    public static final String ON_EFFECT_CLEAR = "player:effects:clear";
-    public static final String ON_PLAYER_REMOVE = "player:game:session:disconnected";
+    public static final String ON_MAP_UPDATE = "sdk:on-map-updated";
+    public static final String ON_MAP_INIT = "sdk:on-map-information-received";
+    public static final String ON_INVENTORY_UPDATE = "sdk:on-player-inventory-updated";
 
-    //Emitting Event (SDK -> Server)
-    public static final String EMIT_JOIN_GAME = "player:game:session:join";
-    public static final String EMIT_LEAVE_GAME = "player:game:session:leave";
-    public static final String EMIT_MOVE = "player:action:move";
-    public static final String EMIT_ATTACK = "player:action:attack";
-    public static final String EMIT_SHOOT = "player:action:shoot";
-    public static final String EMIT_THROW = "player:action:throw";
-    public static final String EMIT_PICKUP_ITEM = "player:item:pick";
-    public static final String EMIT_USE_ITEM = "player:item:use";
-    public static final String EMIT_REVOKE_ITEM = "player:item:drop";
+    public static final String EMIT_JOIN_GAME = "sdk:join-game";
+    public static final String EMIT_MOVE = "sdk:move";
+    public static final String EMIT_SHOOT = "sdk:shoot";
+    public static final String EMIT_ATTACK = "sdk:attack";
+    public static final String EMIT_THROW = "sdk:throw";
+    public static final String EMIT_PICKUP_ITEM = "sdk:pickup-item";
+    public static final String EMIT_USE_ITEM = "sdk:use-item";
+    public static final String EMIT_REVOKE_ITEM = "sdk:revoke-item";
 }

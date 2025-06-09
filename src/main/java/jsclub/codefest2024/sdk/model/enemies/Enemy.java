@@ -1,4 +1,4 @@
-package jsclub.codefest2024.sdk.model.npcs;
+package jsclub.codefest2024.sdk.model.enemies;
 
 import jsclub.codefest2024.sdk.model.Element;
 import jsclub.codefest2024.sdk.model.ElementType;

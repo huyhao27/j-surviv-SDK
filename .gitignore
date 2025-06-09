@@ -26,5 +26,3 @@ replay_pid*
 target
 
 .idea
-src/main/java/jsclub/codefest2024/bot/*
-src/main/java/jsclub/codefest2024/bot/Main.java

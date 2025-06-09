@@ -17,17 +17,21 @@ public class onPlayerInventoryUpdate implements Emitter.Listener {
     Gson gson = new Gson();
 
     public onPlayerInventoryUpdate(Inventory heroInventory) {
+        System.out.println("hero inventory: " + heroInventory);
         this.heroInventory = heroInventory;
     }
 
     @Override
     public void call(Object... args) {
+        System.out.println("update inventory");
         try {
             String message = MsgPackUtil.decode(args[0]);
             InventoryUpdateData inventoryUpdateData = gson.fromJson(message, InventoryUpdateData.class);
+
             ElementType type = inventoryUpdateData.itemType;
             String id = inventoryUpdateData.id;
             String action = inventoryUpdateData.action;
+            System.out.println("info: " + type + " " + id + " " + action);
             switch (action) {
                 case "ADD":
                     switch (type) {
@@ -38,13 +42,10 @@ public class onPlayerInventoryUpdate implements Emitter.Listener {
                             heroInventory.setMelee(WeaponFactory.getWeaponById(id));
                             break;
                         case THROWABLE:
-                            heroInventory.setThrowable(WeaponFactory.getWeaponById(id));
-                            break;
-                        case SPECIAL:
-                            heroInventory.setSpecial(WeaponFactory.getWeaponById(id));
+                            heroInventory.getListThrowable().add(WeaponFactory.getWeaponById(id));
                             break;
                         case ARMOR:
-                            heroInventory.getListArmor().add(ArmorFactory.getArmorById(id));
+                            heroInventory.setArmor(ArmorFactory.getArmorById(id));
                             break;
                         case HEALING_ITEM:
                             heroInventory.getListHealingItem().add(HealingItemFactory.getHealingItemById(id));
@@ -60,13 +61,10 @@ public class onPlayerInventoryUpdate implements Emitter.Listener {
                             heroInventory.setMelee(WeaponFactory.getWeaponById("HAND"));
                             break;
                         case THROWABLE:
-                            heroInventory.setThrowable(null);
-                            break;
-                        case SPECIAL:
-                            heroInventory.setSpecial(null);
+                            heroInventory.getListThrowable().remove(WeaponFactory.getWeaponById(id));
                             break;
                         case ARMOR:
-                            heroInventory.getListArmor().remove(ArmorFactory.getArmorById(id));
+                            heroInventory.setArmor(null);
                             break;
                         case HEALING_ITEM:
                             heroInventory.getListHealingItem().remove(HealingItemFactory.getHealingItemById(id));
@@ -74,6 +72,7 @@ public class onPlayerInventoryUpdate implements Emitter.Listener {
                     }
                     break;
             }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

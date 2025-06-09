@@ -2,6 +2,7 @@ package jsclub.codefest2024.sdk.socket;
 
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
+import jsclub.codefest2024.sdk.Hero;
 import jsclub.codefest2024.sdk.model.GameMap;
 import jsclub.codefest2024.sdk.model.Inventory;
 import jsclub.codefest2024.sdk.socket.event_handler.onMapInit;
@@ -13,14 +14,13 @@ public class SocketClient {
     private final Inventory heroInventory;
     private final GameMap gameMap;
 
-    public void connectToServer(String serverUrl, String playerName, String playerKey, Emitter.Listener onMapUpdate) {
+    public void connectToServer(String serverUrl, Emitter.Listener onMapUpdate, Hero hero) {
         if (socket != null) {
             socket.disconnect();
             socket = null;
         }
 
-        String secretKey = "sk-zsSlPQT_R_-vRYEi0FYVhA:rQ2O70MyHthadd-rcUryK3i4rtsWp2pG1UHrWktTNz6vhBJC8fnzpJZ-wfHKk8aTJYb8nhcY97DmwsC2NZDXZA";
-        socket = SocketUtil.init(serverUrl + "/bot/socket?secretKey="+ secretKey,  playerName, playerKey);
+        socket = SocketUtil.init(serverUrl);
         if (socket == null) {
             return;
         }
@@ -30,17 +30,9 @@ public class SocketClient {
             public void call(Object... args) {
                 System.out.println("Connected to the server");
                 socket.on(EventName.ON_MAP_INIT, new onMapInit(gameMap));
-                socket.on(EventName.ON_INVENTORY_UPDATE, new onPlayerInventoryUpdate(heroInventory));
+                socket.on(EventName.ON_INVENTORY_UPDATE, new onPlayerInventoryUpdate(hero.getInventory()));
 
                 socket.on(EventName.ON_MAP_UPDATE, onMapUpdate);
-
-                socket.on(EventName.ON_PLAYER_REMOVE, new Emitter.Listener() {
-                    @Override
-                    public void call(Object... args) {
-                        System.out.println("You've been kicked out of the server");
-                        System.exit(0);
-                    }
-                });
             }
         });
 
@@ -55,7 +47,6 @@ public class SocketClient {
             @Override
             public void call(Object... args) {
                 System.err.println("Connection error: " + args[0]);
-                System.exit(1);
             }
         });
 

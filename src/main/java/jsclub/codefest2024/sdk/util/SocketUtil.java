@@ -19,18 +19,12 @@ public class SocketUtil {
      * @param url The url of the socket server.
      * @return A socket object
      */
-    public static Socket init(String url, String playerName, String playerKey) {
+    public static Socket init(String url) {
         OkHttpClient okHttpClient = getHttpClientBuilder();
         IO.setDefaultOkHttpCallFactory((Call.Factory) okHttpClient);
         IO.setDefaultOkHttpWebSocketFactory((WebSocket.Factory) okHttpClient);
-
         try {
-            // Build the URL with query parameters
-            IO.Options options = new IO.Options();
-            options.query = "player_name=" + playerName + "&player_key=" + playerKey;
-
-            // Pass the options when creating the socket
-            return IO.socket(url, options);
+            return IO.socket(url);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

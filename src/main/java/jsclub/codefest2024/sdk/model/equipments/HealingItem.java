@@ -2,39 +2,25 @@ package jsclub.codefest2024.sdk.model.equipments;
 
 import jsclub.codefest2024.sdk.model.Element;
 import jsclub.codefest2024.sdk.model.ElementType;
-import jsclub.codefest2024.sdk.model.effects.Effect;
-
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class HealingItem extends Element {
-    private int rarity;
-    private int duration;
-
     private final int healingHP;
-    private final double usageTime;
+    private final int usageTime;
     private final int point;
-    private ArrayList<Effect> effects;
 
-
-    public HealingItem(String id, ElementType type, int rarity, double usageTime, int healingHp, int duration, int point, Effect... effects) {
+    public HealingItem(String id, int healingHp, int usageTime, int point) {
         super(id);
-        this.rarity = rarity;
-        this.duration = duration;
         this.healingHP = healingHp;
         this.usageTime = usageTime;
         this.point = point;
-
-        this.setType(type);
-        this.effects = new ArrayList<>(Arrays.asList(effects));
+        this.setType(ElementType.HEALING_ITEM);
     }
 
     public int getHealingHP() {
         return healingHP;
     }
 
-    public double getUsageTime() {
+    public int getUsageTime() {
         return usageTime;
     }
 
