@@ -19,7 +19,8 @@ public class SocketClient {
             socket = null;
         }
 
-        socket = SocketUtil.init(serverUrl + "/sdk", playerName, playerKey);
+        String secretKey = "sk-zsSlPQT_R_-vRYEi0FYVhA:rQ2O70MyHthadd-rcUryK3i4rtsWp2pG1UHrWktTNz6vhBJC8fnzpJZ-wfHKk8aTJYb8nhcY97DmwsC2NZDXZA";
+        socket = SocketUtil.init(serverUrl + "/bot/socket?secretKey="+ secretKey,  playerName, playerKey);
         if (socket == null) {
             return;
         }

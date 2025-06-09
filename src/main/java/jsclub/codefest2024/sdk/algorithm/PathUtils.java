@@ -41,7 +41,7 @@ public class PathUtils {
         int[] Dx = {-1, 1, 0, 0};
         int[] Dy = {0, 0, -1, 1};
         int mapSize = gameMap.getMapSize();
-        int darkAreaSize = gameMap.getDarkAreaSize();
+        int darkAreaSize = gameMap.getSafeZone();
         List<Obstacle> listIndestructibleObstacles = gameMap.getListIndestructibleObstacles();
         ArrayList<ArrayList<Integer>> isRestrictedNodes = new ArrayList<>(mapSize + 5);
         ArrayList<ArrayList<Integer>> g = new ArrayList<>(mapSize + 5);

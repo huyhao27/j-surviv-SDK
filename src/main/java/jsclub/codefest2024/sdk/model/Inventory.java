@@ -32,7 +32,7 @@ public class Inventory {
                 this.special =  WeaponFactory.getWeaponById(n.getID());
             if (n.getType().equals(ElementType.ARMOR))
                 this.listArmor.add(ArmorFactory.getArmorById(n.getID()));
-            if (n.getType().equals(ElementType.GUN))
+            if (n.getType().equals(ElementType.HEALING_ITEM))
                 this.listHealingItem.add(HealingItemFactory.getHealingItemById(n.getID()));
 
         }
