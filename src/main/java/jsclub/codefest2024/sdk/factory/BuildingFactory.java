@@ -1,8 +1,8 @@
 package jsclub.codefest2024.sdk.factory;
 
 import jsclub.codefest2024.sdk.base.Node;
-import jsclub.codefest2024.sdk.buildings.Building;
-import jsclub.codefest2024.sdk.buildings.ShapeType;
+import jsclub.codefest2024.sdk.model.buildings.Building;
+import jsclub.codefest2024.sdk.model.buildings.ShapeType;
 
 import java.util.Map;
 

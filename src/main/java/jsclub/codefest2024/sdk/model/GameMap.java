@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
-import jsclub.codefest2024.sdk.buildings.Building;
+import jsclub.codefest2024.sdk.model.buildings.Building;
 import jsclub.codefest2024.sdk.factory.*;
 import jsclub.codefest2024.sdk.model.npcs.*;
 import jsclub.codefest2024.sdk.model.equipments.*;

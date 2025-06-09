@@ -1,13 +1,12 @@
-package jsclub.codefest2024.sdk.buildings;
+package jsclub.codefest2024.sdk.model.buildings;
 
 import jsclub.codefest2024.sdk.base.Node;
 import jsclub.codefest2024.sdk.model.Element;
-import jsclub.codefest2024.sdk.model.ElementType;
 
 public class Building extends Element {
     private ShapeType shapeType;
-    private Node limitPos; // toa do gioi han
-    private Node landmarkPos; // toa do moc
+    private Node limitPos; // toa do gioi han (goc duoi ben phai)
+    private Node landmarkPos; // toa do moc (goc tren ben trai)
 
     public Building(String id, ShapeType shapeType) {
         super(id);
@@ -19,6 +18,12 @@ public class Building extends Element {
         this.shapeType = shapeType;
         this.limitPos = limitPos;
         this.landmarkPos = landmarkPos;
+    }
+
+    public Node getCenter() {
+        int x = (this.limitPos.getX() + this.landmarkPos.getX())/2;
+        int y = (this.limitPos.getY() + this.landmarkPos.getY())/2;
+        return new Node(x, y);
     }
 
     public ShapeType getShapeType() {
