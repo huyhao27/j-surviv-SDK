@@ -72,7 +72,6 @@ public class Hero {
         if (socket != null) {
             try {
                 PlayerJoinGameAction joinGame = new PlayerJoinGameAction(this.gameID);
-                System.out.println(joinGame.toString());
                 byte[] bytes = MsgPackUtil.encodeFromObject(joinGame);
                 socket.emit(EventName.EMIT_JOIN_GAME, (Object) bytes);
             } catch (IOException e) {

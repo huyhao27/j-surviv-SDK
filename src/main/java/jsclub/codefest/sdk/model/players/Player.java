@@ -26,7 +26,7 @@ public class Player extends Element {
 //    private String ID;
 
     @SerializedName("health")
-    private int health;
+    private Float health;
     @SerializedName("score")
     private int score;
     @SerializedName("inventory")
@@ -44,7 +44,7 @@ public class Player extends Element {
         return super.getId();
     }
 
-    public int getHealth() {
+    public Float getHealth() {
         return health;
     }
 

@@ -56,11 +56,12 @@ public class PathUtils {
             canGoThroughNodes.add(new Node(o.getX(), o.getY()));
         }
 
-        List<Obstacle> listIndestructibleObstacles = gameMap.getListIndestructibleObstacles();
-        List<Node> listIndestructibleNodes = new ArrayList<>();
-        for(Obstacle o:listIndestructibleObstacles) {
-            listIndestructibleNodes.add(new Node(o.getX(), o.getY()));
-        }
+        List<Obstacle> listIndestructibleObstacles = gameMap.getListObstacles();
+        List<Node> listIndestructibleNodes = new ArrayList<>(listIndestructibleObstacles);
+//        listIndestructibleNodes.addAll(listIndestructibleObstacles);
+//        for(Obstacle o:listIndestructibleObstacles) {
+//            listIndestructibleNodes.add(o);
+//        }
         listIndestructibleNodes.removeAll(canGoThroughNodes);
         listIndestructibleNodes.addAll(restrictedNodes);
 

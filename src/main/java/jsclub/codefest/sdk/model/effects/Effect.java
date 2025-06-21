@@ -3,12 +3,14 @@ package jsclub.codefest.sdk.model.effects;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigInteger;
+
 public class Effect {
     @SerializedName("id")
     private String id;
 
     @SerializedName("duration")
-    private Float duration;
+    private BigInteger duration;
 
     @SerializedName("level")
     private Integer level;
@@ -16,13 +18,13 @@ public class Effect {
     public Effect() {
     }
 
-    public Effect(Float duration, String id, Integer level) {
+    public Effect(BigInteger duration, String id, Integer level) {
         this.duration = duration;
         this.id = id;
         this.level = level;
     }
 
-    public Float getduration() {
+    public BigInteger getDuration() {
         return duration;
     }
 
@@ -30,13 +32,13 @@ public class Effect {
         return id;
     }
 
-    public Integer getlevel(){ return level;};
+    public Integer getLevel(){ return level;};
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setDuration(Float duration) {
+    public void setDuration(BigInteger duration) {
         this.duration = duration;
     }
 
