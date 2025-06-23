@@ -8,10 +8,10 @@ import java.util.List;
 
 public class Entity {
     @SerializedName("x")
-    public int x;
+    public Integer x;
 
     @SerializedName("y")
-    public int y;
+    public Integer y;
 
     @SerializedName("id")
     public String id;

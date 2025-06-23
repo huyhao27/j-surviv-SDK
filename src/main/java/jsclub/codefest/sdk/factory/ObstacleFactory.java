@@ -55,7 +55,7 @@ public class ObstacleFactory {
         Map.entry("MUSHROOM", new Obstacle("MUSHROOM", ElementType.OBSTACLE, List.of(ObstacleTag.HERO_HIT_BY_BAT_WILL_BE_STUNNED))),      
         Map.entry("BELL_COLUMN", new Obstacle("BELL_COLUMN", ElementType.OBSTACLE, List.of(ObstacleTag.PULLABLE_ROPE, ObstacleTag.HERO_HIT_BY_BAT_WILL_BE_STUNNED))),      
         Map.entry("MUTANT_FLOWER", new Obstacle("MUTANT_FLOWER", ElementType.OBSTACLE, List.of(ObstacleTag.HERO_HIT_BY_BAT_WILL_BE_STUNNED))),      
-        Map.entry("ABANDONED_RUINS_WALL", new Obstacle("BELL_COLUMN", ElementType.OBSTACLE, List.of(ObstacleTag.PULLABLE_ROPE, ObstacleTag.HERO_HIT_BY_BAT_WILL_BE_STUNNED))),      
+        Map.entry("ABANDONED_RUINS_WALL", new Obstacle("ABANDONED_RUINS_WALL", ElementType.OBSTACLE, List.of(ObstacleTag.PULLABLE_ROPE, ObstacleTag.HERO_HIT_BY_BAT_WILL_BE_STUNNED))),      
         Map.entry("LUMINOUS_STONE", new Obstacle("LUMINOUS_STONE", ElementType.OBSTACLE, List.of(ObstacleTag.PULLABLE_ROPE, ObstacleTag.HERO_HIT_BY_BAT_WILL_BE_STUNNED))),      
         Map.entry("GIANT_MUSHROOM", new Obstacle("GIANT_MUSHROOM", ElementType.OBSTACLE, List.of(ObstacleTag.PULLABLE_ROPE, ObstacleTag.HERO_HIT_BY_BAT_WILL_BE_STUNNED))),      
         Map.entry("GIANT_GLOWING_TREE", new Obstacle("GIANT_GLOWING_TREE", ElementType.OBSTACLE, List.of(ObstacleTag.PULLABLE_ROPE, ObstacleTag.HERO_HIT_BY_BAT_WILL_BE_STUNNED)))

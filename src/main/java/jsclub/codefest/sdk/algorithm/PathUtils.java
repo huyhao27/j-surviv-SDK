@@ -16,7 +16,7 @@ public class PathUtils {
      * @param x,y Node to calculate distance between 2 nodes.
      * @return distance with int value.
      */
-    private static int distance(Node x, Node y) {
+    public static int distance(Node x, Node y) {
         return Math.abs(x.x - y.x) + Math.abs(x.y - y.y);
     }
 
@@ -49,20 +49,11 @@ public class PathUtils {
         int mapSize = gameMap.getMapSize();
         int safeZone = gameMap.getSafeZone();
 
+        List<Obstacle> initThings = gameMap.getListObstacleInit();
+        List<Obstacle> canGoThroughs = gameMap.getObstaclesByTag("CAN_GO_THROUGH");
 
-        List<Obstacle> canGoThroughList = gameMap.getObstaclesByTag("CAN_GO_THROUGH");
-        List<Node> canGoThroughNodes = new ArrayList<>();
-        for(Obstacle o:canGoThroughList) {
-            canGoThroughNodes.add(new Node(o.getX(), o.getY()));
-        }
-
-        List<Obstacle> listIndestructibleObstacles = gameMap.getListObstacles();
-        List<Node> listIndestructibleNodes = new ArrayList<>(listIndestructibleObstacles);
-//        listIndestructibleNodes.addAll(listIndestructibleObstacles);
-//        for(Obstacle o:listIndestructibleObstacles) {
-//            listIndestructibleNodes.add(o);
-//        }
-        listIndestructibleNodes.removeAll(canGoThroughNodes);
+        List<Node> listIndestructibleNodes = new ArrayList<>(initThings);
+        listIndestructibleNodes.removeAll(canGoThroughs);
         listIndestructibleNodes.addAll(restrictedNodes);
 
         ArrayList<ArrayList<Integer>> isRestrictedNodes = new ArrayList<>(mapSize + 5);

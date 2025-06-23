@@ -10,20 +10,6 @@ import jsclub.codefest.sdk.socket.data.receive_data.ItemData;
 import java.util.List;
 
 public class Player extends Element {
-//    @SerializedName("player_name")
-//    private String playerName;
-//
-//    @SerializedName("bullet_num")
-//    private int bulletNum;
-//
-//    @SerializedName("damage_reduction")
-//    private int damageReduction;
-//
-//    @SerializedName("is_alive")
-//    private boolean isAlive;
-
-//    @SerializedName("id")
-//    private String ID;
 
     @SerializedName("health")
     private Float health;
@@ -52,12 +38,8 @@ public class Player extends Element {
         return score;
     }
 
-//    public Inventory getInventory() {
-//        return inventory;
-//    }
-
-    public List<ItemData> getInventory(){
-        return inventory;
+    public Inventory getInventory() {
+        return new Inventory(inventory);
     }
 
     public List<String> getCanBeSeenBy() {
